@@ -26,3 +26,6 @@ jobs:
           # hier ist Platz für maven package und docker build
           mvn package
           docker build --tag roscherpa/pet-clinic:latest -f Dockerfile .
+          echo ${{ secrets.password }} | docker login -u 'roscherpa' --password-stdin
+          docker push roscherpa/pet-clinic:latest
+
